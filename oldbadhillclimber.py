@@ -2,6 +2,8 @@ import pybullet as p
 import numpy as np
 import time
 import pybullet_data
+#jajajaja
+#secondtestfromdrago
 supermaxdist = 0
 maxdist =0
 best_params = []
