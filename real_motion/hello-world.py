@@ -2,7 +2,7 @@ from math import sin, cos
 from pylx16a.lx16a import *
 import time
 
-LX16A.initialize("COM5")
+LX16A.initialize("/dev/ttyUSB0")
 
 try:
     servo1 = LX16A(1)#knee
@@ -38,9 +38,9 @@ except ServoLogicalError as e:
 t = 0
 while True:
     try: 
-        servo1.move(sin(0.5*t) * 90 + 90)
-        servo2.move(sin(0.5*t) * 60 + 90)
-        servo3.move(sin(0.5*t) * 55 + 100)
+        servo4.move(sin(0.5*t) * 90 + 90)
+        servo5.move(sin(0.5*t) * 60 + 90)
+        #servo6.move(sin(0.5*t) * 55 + 100)
         time.sleep(0.05)
         t += 0.1
     except ServoError as e:

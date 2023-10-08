@@ -2,8 +2,12 @@ import pybullet as p
 import numpy as np
 import time
 import pybullet_data
+<<<<<<< HEAD
 #jajajaja
 #secondtestfromdrago
+=======
+#sdihfgasdlifh
+>>>>>>> f31f995928dbb304728eae245d4df4de8354f7e7
 supermaxdist = 0
 maxdist =0
 best_params = []

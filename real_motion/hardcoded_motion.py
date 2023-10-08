@@ -2,7 +2,7 @@ from math import sin, cos
 from pylx16a.lx16a import *
 import time
 
-LX16A.initialize("COM5")
+LX16A.initialize("/dev/ttyUSB0")
 
 try:
     servo1 = LX16A(1)#knee
