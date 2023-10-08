@@ -1,3 +1,6 @@
+from math import sin, cos
+from pylx16a.lx16a import *
+
 LX16A.initialize("COM5")
 
 servo1 = LX16A(1)#knee
