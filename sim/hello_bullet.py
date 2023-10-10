@@ -1,13 +1,14 @@
 import pybullet as p
 import time
 import pybullet_data
+
 physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath()) #optionally
 p.setGravity(0,0,-10)
 planeId = p.loadURDF("plane.urdf")
 cubeStartPos = [0,0,0.18]
 cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
-robotId = p.loadURDF(r"C:\Users\jmann\robotstuff\robot_code\URDFs\footjointlimits\jake.urdf",cubeStartPos, cubeStartOrientation, 
+robotId = p.loadURDF(r"C:\Users\jmann\Box\Dook Work\Robot Learning\robot_code\URDFs\feetasrigidjts\jake.urdf",cubeStartPos, cubeStartOrientation, 
                    # useMaximalCoordinates=1, ## New feature in Pybullet
                    flags=p.URDF_USE_INERTIA_FROM_FILE)
 for i in range (10000):
