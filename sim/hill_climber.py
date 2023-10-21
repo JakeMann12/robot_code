@@ -7,7 +7,7 @@ super_best_params = []
 good_motors = [2,4,6,10,12, 14]
  #random initial values
  
-for overall_run in range(100):
+for overall_run in range(40):
     print("OUTER RUN NUMBER: ", overall_run)
     #for each run, generate a set of starting parameters
     super_params = [] #rnadom params for this round
@@ -32,7 +32,7 @@ for overall_run in range(100):
     #run 200  times, adjust by percentages at each point
     for inner_run in range(100):
         print("INNER RUN NUMBER: ", inner_run)
-        physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
+        physicsClient = p.connect(p.DIRECT)#or p.DIRECT for non-graphical version
         p.setAdditionalSearchPath(pybullet_data.getDataPath()) #optionally
         p.setGravity(0,0,-9.81)
         groundId = p.loadURDF("plane.urdf")
@@ -43,7 +43,7 @@ for overall_run in range(100):
         time.sleep(0.05)
         
 
-        for i in range (5000):
+        for i in range (10000):
             p.stepSimulation()
             for j in range(6):
                 a,b,c = super_params[j][0],super_params[j][1],super_params[j][2]
@@ -86,3 +86,12 @@ for overall_run in range(100):
             break
     print("for this round: ", best_params, maxdist)
 print(super_best_params, supermaxdist)
+
+
+#%%
+#for this round:  [[0.70312131 0.04431859 0.005915  ]
+# [0.26623661 0.57702719 0.003185  ]
+# [0.07756777 0.91296144 0.0041405 ]
+# [0.34295338 1.31905742 0.00455   ]
+# [0.87986487 2.08979675 0.0076895 ]
+# [0.28227091 1.16768994 0.00455   ]] 0.8803344409312753

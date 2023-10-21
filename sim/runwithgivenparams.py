@@ -9,7 +9,7 @@ planeId = p.loadURDF("plane.urdf")
 robotStartPos = [0,0,0.18]
 robotStartOrientation = p.getQuaternionFromEuler([0,0,0])
 mode = p.POSITION_CONTROL
-robotId = p.loadURDF("jake.urdf", robotStartPos, robotStartOrientation)
+robotId = p.loadURDF(r"C:\Users\jmann\Box\Dook Work\Robot Learning\robot_code\URDFs\feetasrigidjts\jake.urdf", robotStartPos, robotStartOrientation)
 joints = [2,4,6,10,12, 14]
 time.sleep(1)
 #best params from hillclimber:

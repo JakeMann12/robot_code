@@ -1,6 +1,7 @@
 import pybullet as p
 import time
 import pybullet_data
+import matplotlib.pyplot as plt
 
 #%% Load into pybullet!
 physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
@@ -21,31 +22,56 @@ for joint_number in range(number_of_joints):
     info = p.getJointInfo(rexy, joint_number)
     print(info[0], ": ", info[1]) #tuple of joint data - 25 total but that includes rigid
 
-#%%BE A BIG STEPPER
+#%% HARDCODED 
 
-for i in range (10000):
+
+#%%BE A BIG STEPPER
+servoindices = [2, 4, 6, 10, 12, 14]
+
+# Lists to store joint values over time
+joint_positions = [[] for _ in range(len(servoindices))]
+
+for i in range(2500):
     pos, ori = p.getBasePositionAndOrientation(rexy)
     p.applyExternalForce(rexy, 0, [0, 0, 0], pos, p.WORLD_FRAME) # 0 EXTERNAL FORCE- FUN TEST
     p.stepSimulation()
-    if i //100 == i / 100:
-        print(pos,ori)
+    
+    if i % 100 == 0:  # Check if 'i' is a multiple of 100
+        print("Iteration:", i)
+        
+        for idx, joint_index in enumerate(servoindices):
+            joint_state = p.getJointState(rexy, joint_index)
+            joint_position = joint_state[0]  # Joint position (in radians)
+            joint_velocity = joint_state[1]  # Joint velocity
+            joint_torque = joint_state[3]    # Joint torque
+            #print(f"Joint {joint_index}:")
+            #print(f"  Position: {joint_position} rad")
+            #print(f"  Velocity: {joint_velocity} rad/s")
+            #print(f"  Torque: {joint_torque} Nm")
+
+            # Append joint values to lists
+            joint_positions[idx].append(joint_position)
+    
     time.sleep(1./240.)
-Pos, Orn = p.getBasePositionAndOrientation(rexy)
+
+# Plot the joint values
+for j, joint_index in enumerate(servoindices):
+    plt.plot(joint_positions[j], label=f"Joint {joint_index}")
+
+# Add a legend
+plt.legend(loc="upper right")
+
+# Set axis labels
+plt.xlabel("Time (iterations)")
+plt.ylabel("Joint Positions (radians)")
+
+# Show the plot
+plt.show()
 
 
-
-print(Pos,Orn)
+#print(Pos,Orn)
 # FROM THIS, WE'VE LEARNED THAT WE WANT THE Z COORD TO BE MORE THAN ~.2 AT ALL TIMES- ELSE, FALL
 p.disconnect()
-
-
-
-
-
-
-
-
-
 
 
 #%% JOINT LIMITS

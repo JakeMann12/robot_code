@@ -467,28 +467,6 @@
   </collision>
 </link>
 
-<link name="Noggin_v21">
-  <inertial>
-    <origin xyz="0.3538460409345008 -0.103182 0.29789397373192605" rpy="0 0 0"/>
-    <mass value="0.05806545047808987"/>
-    <inertia ixx="5.252505119797586e-05" iyy="0.00014773268773647912" izz="0.00010189922647076003" ixy="-1.1175455984101902e-20" iyz="1.603417435514401e-20" ixz="-8.328721245680522e-06"/>
-  </inertial>
-  <visual>
-    <origin xyz="0.158373 -0.103182 0.081554" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="meshes/Noggin_v21.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-    <material/>
-  </visual>
-  <collision>
-    <origin xyz="0.158373 -0.103182 0.081554" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="meshes/Noggin_v21.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
 <link name="jake_tail_STEP_v31Jake_Servo_with_Flywheel_v31Motor_w_Flywheel_Attached_31">
   <inertial>
     <origin xyz="0.09764364474378343 0.021659523977101358 -0.03076394170218196" rpy="0 0 0"/>
@@ -761,12 +739,6 @@
   <origin xyz="0.03523 0.0 0.05588" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="battery_case_v141actual_case_lol1"/>
-</joint>
-
-<joint name="Rigid_25" type="fixed">
-  <origin xyz="-0.158373 0.103182 -0.081554" rpy="0 0 0"/>
-  <parent link="base_link"/>
-  <child link="Noggin_v21"/>
 </joint>
 
 <joint name="jake_tail_STEP_v31_Rigid 1" type="fixed">
