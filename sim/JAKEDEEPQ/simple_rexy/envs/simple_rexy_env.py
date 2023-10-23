@@ -1,14 +1,19 @@
 #needs heavy mods
 
 import gym
+#from gym import error, spaces, utils
+#from gym.utils import seeding
 import numpy as np
 import math
 import pybullet as p
 import matplotlib as plt
-from JAKEDEEPQ.resources.REXY import Rexy
-from JAKEDEEPQ.resources.plane import Plane #called in RESET FUNCT
-from JAKEDEEPQ.resources.goal import Goal #called in RESET FUNCT
+from ..resources.REXY import Rexy
+from ..resources.plane import Plane #called in RESET FUNCT
+from ..resources.goal import Goal #called in RESET FUNCT
 import random
+
+#print(Rexy.get_observation)
+
 
 class SimpleRexyEnv(gym.Env):
     metadata = {'render.modes': ['human']}  
@@ -20,8 +25,8 @@ class SimpleRexyEnv(gym.Env):
             # NOTE : set values to 0?
             #low=np.array([30,30,25,20,20,100], dtype=np.float32), # LOW VALUES FOR EACH SERVO
             #high=np.array([210,150,160,220,178,230], dtype=np.float32)) #HIGH VALUES FOR EACH SERVO 
-            low = -.4*np.pi*np.ones_like(self.robot_joints_index), # <-90 degrees for all- prob overkill still
-            high = .4*np.pi*np.ones_like(self.robot_joints_index))
+            low = -.4*np.pi*np.ones_like(self.servoindices), # <-90 degrees for all- prob overkill still
+            high = .4*np.pi*np.ones_like(self.servoindices))
         self.observation_space = gym.spaces.box.Box(
             low=np.array([-10, -10, -1, -1, -5, -5, 0, 0]),
             high=np.array([10, 10, 1, 1, 5, 5, 5, 5]))

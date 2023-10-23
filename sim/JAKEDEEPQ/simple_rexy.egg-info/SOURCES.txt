@@ -1,0 +1,7 @@
+README.md
+setup.py
+simple_rexy.egg-info/PKG-INFO
+simple_rexy.egg-info/SOURCES.txt
+simple_rexy.egg-info/dependency_links.txt
+simple_rexy.egg-info/requires.txt
+simple_rexy.egg-info/top_level.txt
